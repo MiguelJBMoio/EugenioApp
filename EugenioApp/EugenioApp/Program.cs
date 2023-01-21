@@ -1,3 +1,9 @@
+using EugenioApp.Entities;
+using Microsoft.EntityFrameworkCore;
+using MySql.EntityFrameworkCore.Extensions;
+using System.Configuration;
+using EugenioApp.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddEntityFrameworkMySQL().AddDbContext<Sql11592069Context>(options => {
+        options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
 
 var app = builder.Build();
 

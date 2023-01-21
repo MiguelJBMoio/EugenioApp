@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32901.82
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EugenioApp", "EugenioApp\EugenioApp.csproj", "{691FE17A-10FA-4C9D-8F27-1CA0643BB799}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{C0B968F0-1F07-48E7-935C-C45E0497D608}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C77694B8-1228-4580-A9EB-6FC53CA046DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EugenioApp", "EugenioApp\EugenioApp.csproj", "{691FE17A-10FA-4C9D-8F27-1CA0643BB799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{691FE17A-10FA-4C9D-8F27-1CA0643BB799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{691FE17A-10FA-4C9D-8F27-1CA0643BB799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{691FE17A-10FA-4C9D-8F27-1CA0643BB799}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0B968F0-1F07-48E7-935C-C45E0497D608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0B968F0-1F07-48E7-935C-C45E0497D608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0B968F0-1F07-48E7-935C-C45E0497D608}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0B968F0-1F07-48E7-935C-C45E0497D608}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C77694B8-1228-4580-A9EB-6FC53CA046DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C77694B8-1228-4580-A9EB-6FC53CA046DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C77694B8-1228-4580-A9EB-6FC53CA046DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C77694B8-1228-4580-A9EB-6FC53CA046DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
