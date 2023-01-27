@@ -6,12 +6,14 @@ use App\Http\Controllers\IniciarDesafio;
 use App\Http\Controllers\RealizarInscricoes;
 use App\Http\Controllers\VerResultados;
 
+//GETS
+
 
 //ROTA HOME
 Route::get('/', [HomeController::class,'index']);
 
 //ROTA REALIZAR INSCRIÇÕES
-Route::get('/realizar-inscricoes', [RealizarInscricoes::class, 'index']);
+Route::get('/realizar-inscricoes', [RealizarInscricoes::class, 'index'])->name('realizar-inscricoes');
 
 //ROTA INICIAR DESAFIO
 Route::get('/iniciar-desafio', [IniciarDesafio::class, 'index']);
@@ -21,6 +23,16 @@ Route::get('/ver-resultados', [VerResultados::class, 'index']);
 
 //ROTA SAIR
 Route::get('/sair', [HomeController::class, 'index']);
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+//POSTS
+
+
+Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador'])->name('adicionarJogador');
 
 /*
 |--------------------------------------------------------------------------
