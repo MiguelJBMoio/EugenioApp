@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IniciarDesafio;
 use App\Http\Controllers\RealizarInscricoes;
 use App\Http\Controllers\VerResultados;
+use App\Http\Controllers\SessaoController;
 
 //GETS
 
@@ -33,6 +34,8 @@ Route::get('/sair', [HomeController::class, 'index']);
 
 
 Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador'])->name('adicionarJogador');
+
+Route::post('/criar-sessao', [SessaoController::class, 'criarSessao']);
 
 /*
 |--------------------------------------------------------------------------

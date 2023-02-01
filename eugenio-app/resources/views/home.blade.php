@@ -8,6 +8,9 @@
         font-size: 4rem;
         margin-bottom: 2rem;
       }
+      #successMessage {
+        display: none;
+      }
       .container {
         display: flex;
         flex-direction: column;
@@ -40,9 +43,16 @@
       }
     </style>
   </head>
+  
   <body class="bg-gray-200 align-items justify-content">
     <div class="container mx-auto">
-      <h1 class="title text-2xl font-bold text-indigo-600 text-center">Circuito Eugénio</h1>
+      <h1 class="title text-2xl font-bold text-blue-500 text-center">Circuito Eugénio</h1>
+      <div class="text-center flex-end justify-content">
+        <form id="create-session-form" action="{{url('criar-sessao')}}" method="post" class="flex-end">
+          @csrf
+          <button type="submit" id="create-session-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">Criar Sessão</button>
+        </form>
+      </div>
       <div class="container mx-auto text-center">
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('iniciar-desafio')}}'">Iniciar Desafio</button>
@@ -53,3 +63,14 @@
     
   </body>
 </html>
+
+<script>
+  document.getElementById("create-session-button").addEventListener("click", function() {
+    document.getElementById("create-session-button").innerHTML = "Sessão criada com sucesso";
+  
+    setTimeout(function() {
+      document.getElementById("create-session-button").innerHTML = "Criar Sessão";
+    }, 5000);
+  });
+</script>
+  
