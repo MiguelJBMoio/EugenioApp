@@ -6,6 +6,7 @@ use App\Http\Controllers\IniciarDesafio;
 use App\Http\Controllers\RealizarInscricoes;
 use App\Http\Controllers\VerResultados;
 use App\Http\Controllers\SessaoController;
+use App\Http\Controllers\DesafioController;
 
 //GETS
 
@@ -25,17 +26,19 @@ Route::get('/ver-resultados', [VerResultados::class, 'index']);
 //ROTA SAIR
 Route::get('/sair', [HomeController::class, 'index']);
 
-
+//ROTA DESAFIO
+Route::get('/desafio', [DesafioController::class, 'index']);
 
 //--------------------------------------------------------------------------------------------------------------
 
 
 //POSTS
 
-
 Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador'])->name('adicionarJogador');
 
 Route::post('/criar-sessao', [SessaoController::class, 'criarSessao']);
+
+
 
 /*
 |--------------------------------------------------------------------------
