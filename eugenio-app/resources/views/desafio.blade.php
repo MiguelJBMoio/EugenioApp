@@ -19,10 +19,12 @@
         <h1 class="text-6xl font-medium text-gray-800 mt-10">{{ $configuracao->Titulo }} | {{ $jogador->Nome }}</h1>
         <div class="w-2/3 mt-10">
             <p id="time" class=" text-center text-4xl text-gray-800 font-medium mt-5"><span class="rounded-full border-4 border-black p-4 border-dashed border-gray-800">{{ $tempo_config }}</span></p>
+            <p id="wpm" class=" text-center text-4xl text-gray-800 font-medium mt-5"><span></span></p>
+            <p id="inputValueDivided" class=" text-center text-4xl text-gray-800 font-medium mt-5"><span></span></p>
 
 
             <p id="expected-text" class="text-gray-800 font-medium mt-5">{{ $configuracao->Texto }}</p>
-            <textarea id="input-text" class="w-full h-64 p-5 border border-gray-400 mt-5 text-2xl" id="texto"></textarea>
+            <textarea placeholder="Assim que começar a escrever o tempo cronômetro começará a ser descontado!" id="input-text" class="w-full h-64 p-5 border border-gray-400 mt-5 text-2xl" id="texto"></textarea>
           </div>
         
           <button class="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 mt-10 rounded" id="terminar">Terminar Desafio</button>
@@ -62,28 +64,61 @@
 
         <script id="Script Cronômetro">
             let intervalId;
-        
+            let wordCount = 0;
+            
+            inputText.addEventListener("input", function() {
+                const inputValue = inputText.value;
+                const inputValueDividedView = document.querySelector("#inputValueDivided");
+                let inputWords = inputValue.split(" ");
+                wordCount = inputWords.length;
+                const expectedWords = expectedText.split(" ");
+                correctWords = 0;
+                incorrectWords = 0;
+
+                for (let i = 0; i < expectedWords.length; i++) {
+                    if (expectedWords[i] === inputWords[i]) {
+                        correctWords++;
+                    } else {
+                        incorrectWords++;
+                    }
+                }
+            });
+
             inputText.addEventListener("focus", function() {
             if (intervalId) {
                 return;
             }
-        
+            
             const timeDisplay = document.querySelector("#time");
             const time = "{{ $configuracao->Tempo_Configuracao }}"; // pega o valor da variável
             const timeArray = time.split(":"); // divide o tempo em horas, minutos e segundos
             let totalSeconds = parseInt(timeArray[0]) * 3600 + parseInt(timeArray[1]) * 60 + parseInt(timeArray[2]); // converte para segundos
-        
+            let startCronoSeconds = totalSeconds;
+
             intervalId = setInterval(function() {
                 totalSeconds--; // decrementa o número de segundos
                 let hours = Math.floor(totalSeconds / 3600); // converte para horas
                 let minutes = Math.floor((totalSeconds - hours * 3600) / 60); // converte para minutos
                 let seconds = totalSeconds - (hours * 3600 + minutes * 60); // segundos restantes
                 // atualiza a exibição do tempo com os novos valores
-                timeDisplay.innerHTML = `${("0" + minutes).slice(-2)}:${("0" + seconds).slice(-2)}`; 
+                timeDisplay.innerHTML = `<span class="rounded-full border-4 border-black p-4 border-dashed border-gray-800">${("0" + minutes).slice(-2)}:${("0" + seconds).slice(-2)}</span>`; 
                 if (totalSeconds === 0) {
                 clearInterval(intervalId); // para a contagem quando chegar a zero
                 intervalId = null;
                 }
+
+                // Calcula o número de WPM
+                const wpm = Math.round(wordCount / ((startCronoSeconds - totalSeconds) / 60));
+
+                // VARIÁVEL PARA PASSAR wpm
+                // VARIÁVEL DE TEMPO PASSADO PARA PASSAR totalSeconds
+                // VARIÁVEL DE PALAVRAS CORRETAS correctWords
+                // VARIÁVEL DE PALAVRAS INCORRETAS incorrectWords
+
+                const pontuacaoFinal = wpm + (correctWords * 10) - (incorrectWords * 5);
+
+                // Exibe o número de WPM em algum elemento HTML
+                document.querySelector("#wpm").innerHTML = `WPM: ${wpm}`;
             }, 1000);
             });
         </script>

@@ -26,4 +26,8 @@ class DesafioController extends Controller
             'tempo_config' => $tempo_config
         ]);
     }
+
+    function configClassification(){
+        
+    }
 }
