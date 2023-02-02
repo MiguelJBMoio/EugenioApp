@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teste extends Model
 {
+    protected $fillable = [
+        'FK_Classificacao'
+    ];
+
     protected $table = 'Teste';
     protected $primaryKey = 'PK_Teste';
     public $timestamps = false;

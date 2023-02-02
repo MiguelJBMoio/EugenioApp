@@ -32,8 +32,20 @@
         
 
         <script id="Script verificação de cada caractere">
-            
+            let CORRECT_WORDS = 0;
+            let INCORRECT_WORDS = 0;
+            let WPM = 0;            
+            let TIME_PASSED = 0;
+            let PONTUACAO_FINAL = 0;
+            const PK_Configuracao = "{{ $configuracao->PK_Configuracao }}";
+            const PK_Jogador = "{{ $jogador->PK_Jogador }}";
 
+            console.log(CORRECT_WORDS);
+            console.log(INCORRECT_WORDS);
+            console.log(TIME_PASSED);
+            console.log(WPM);
+            console.log(PONTUACAO_FINAL);
+            
             const expectedText = document.querySelector("#expected-text").innerText;
             const inputText = document.querySelector("#input-text");
             const expectedTextContainer = document.querySelector("#expected-text");
@@ -60,9 +72,6 @@
             expectedTextContainer.innerHTML = expectedTextWithStyles;
             });
       
-        </script>
-
-        <script id="Script Cronômetro">
             let intervalId;
             let wordCount = 0;
             
@@ -81,7 +90,19 @@
                     } else {
                         incorrectWords++;
                     }
+                    CORRECT_WORDS = correctWords;
+                    INCORRECT_WORDS = incorrectWords;
                 }
+            });
+
+            document.getElementById("terminar").addEventListener("click", function() {
+                console.log(CORRECT_WORDS);
+                console.log(INCORRECT_WORDS);
+                console.log(TIME_PASSED);
+                console.log(WPM);
+                console.log(PONTUACAO_FINAL);
+
+                window.location.href = `/classificacao-config?wpm=${WPM}&correctWords=${CORRECT_WORDS}&incorrectWords=${INCORRECT_WORDS}&timePassed=${TIME_PASSED}&pontuacaoFinal=${PONTUACAO_FINAL}&jogador=${PK_Jogador}&configuracao=${PK_Configuracao}`;
             });
 
             inputText.addEventListener("focus", function() {
@@ -94,6 +115,8 @@
             const timeArray = time.split(":"); // divide o tempo em horas, minutos e segundos
             let totalSeconds = parseInt(timeArray[0]) * 3600 + parseInt(timeArray[1]) * 60 + parseInt(timeArray[2]); // converte para segundos
             let startCronoSeconds = totalSeconds;
+
+            
 
             intervalId = setInterval(function() {
                 totalSeconds--; // decrementa o número de segundos
@@ -114,14 +137,16 @@
                 // VARIÁVEL DE TEMPO PASSADO PARA PASSAR totalSeconds
                 // VARIÁVEL DE PALAVRAS CORRETAS correctWords
                 // VARIÁVEL DE PALAVRAS INCORRETAS incorrectWords
+                WPM = wpm;
+                TIME_PASSED = startCronoSeconds - totalSeconds;
+                let pontuacaoFinal = WPM + (CORRECT_WORDS * 10) - (INCORRECT_WORDS * 5);
 
-                const pontuacaoFinal = wpm + (correctWords * 10) - (incorrectWords * 5);
+                PONTUACAO_FINAL = pontuacaoFinal;
 
-                // Exibe o número de WPM em algum elemento HTML
-                document.querySelector("#wpm").innerHTML = `WPM: ${wpm}`;
             }, 1000);
             });
+
         </script>
         
     </body>
-    </html>      
+</html>      

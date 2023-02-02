@@ -7,7 +7,7 @@ use App\Http\Controllers\RealizarInscricoes;
 use App\Http\Controllers\VerResultados;
 use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\DesafioController;
-
+use App\Http\Controllers\ClassificacaoAtualController;
 //GETS
 
 
@@ -38,7 +38,7 @@ Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador']
 
 Route::post('/criar-sessao', [SessaoController::class, 'criarSessao']);
 
-
+Route::get('/classificacao-config', [ClassificacaoAtualController::class, 'index']);
 
 /*
 |--------------------------------------------------------------------------
