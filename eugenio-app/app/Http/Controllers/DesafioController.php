@@ -18,9 +18,12 @@ class DesafioController extends Controller
         $jogadorID = request()->get('jogadores');
         $jogador = Jogador::find($jogadorID);
 
+        $tempo_config = date("m:s", strtotime($configuracao->Tempo_Configuracao));
+
         return view('desafio', [
             'configuracao' => $configuracao,
             'jogador' => $jogador,
+            'tempo_config' => $tempo_config
         ]);
     }
 }
