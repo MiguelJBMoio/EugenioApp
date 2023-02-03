@@ -65,12 +65,29 @@
 </html>
 
 <script>
-  document.getElementById("create-session-button").addEventListener("click", function() {
+document.getElementById("create-session-button").addEventListener("click", function(e) {
+  e.preventDefault();
+
+  var password = prompt("Insira a senha");
+
+  if (password === "admin") {
     document.getElementById("create-session-button").innerHTML = "Sessão criada com sucesso";
-  
+    document.getElementById("create-session-button").style.backgroundColor = "green";
+
     setTimeout(function() {
       document.getElementById("create-session-button").innerHTML = "Criar Sessão";
+      document.getElementById("create-session-button").style.backgroundColor = "";
+      document.getElementById("create-session-form").submit();
     }, 5000);
-  });
+  } else {
+    document.getElementById("create-session-button").innerHTML = "Senha incorreta";
+    document.getElementById("create-session-button").style.backgroundColor = "red";
+
+    setTimeout(function() {
+      document.getElementById("create-session-button").innerHTML = "Criar Sessão";
+      document.getElementById("create-session-button").style.backgroundColor = "";
+    }, 5000);
+  }
+});
 </script>
   

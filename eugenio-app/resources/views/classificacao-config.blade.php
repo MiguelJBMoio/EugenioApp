@@ -43,8 +43,9 @@
 </head>
 <body class="font-mono text-2xl">
   <div class="container">
-    <h1 class="justify-self-center">Configuração {{ $idConfiguracao }}</h1>
-    <table>
+    <a href="/" class="bg-red-500 text-white p-2 rounded-lg float-left text-sm">Menu Principal</a>
+    <h1 class="text-center text-3xl m-4 text-blue-700">Configuração {{ $idConfiguracao }}</h1>
+    <table class="rounded-lg border shadow-2xl">
       <thead>
         <tr>
           <th>Jogador / Equipa</th>
