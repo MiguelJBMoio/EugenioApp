@@ -128,6 +128,14 @@
                 if (totalSeconds === 0) {
                 clearInterval(intervalId); // para a contagem quando chegar a zero
                 intervalId = null;
+                console.log(CORRECT_WORDS);
+                console.log(INCORRECT_WORDS);
+                console.log(TIME_PASSED);
+                console.log(WPM);
+                console.log(PONTUACAO_FINAL);
+
+                window.location.href = `/classificacao-config?wpm=${WPM}&correctWords=${CORRECT_WORDS}&incorrectWords=${INCORRECT_WORDS}&timePassed=${TIME_PASSED}&pontuacaoFinal=${PONTUACAO_FINAL}&jogador=${PK_Jogador}&configuracao=${PK_Configuracao}`;
+            
                 }
 
                 // Calcula o número de WPM
@@ -138,7 +146,9 @@
                 // VARIÁVEL DE PALAVRAS CORRETAS correctWords
                 // VARIÁVEL DE PALAVRAS INCORRETAS incorrectWords
                 WPM = wpm;
-                TIME_PASSED = startCronoSeconds - totalSeconds;
+                TIME_PASSED = formatTime(startCronoSeconds - totalSeconds);
+                console.log(TIME_PASSED);
+
                 let pontuacaoFinal = WPM + (CORRECT_WORDS * 10) - (INCORRECT_WORDS * 5);
 
                 PONTUACAO_FINAL = pontuacaoFinal;
@@ -146,6 +156,13 @@
             }, 1000);
             });
 
+
+            function formatTime(seconds) {
+                let h = Math.floor(seconds / 3600);
+                let m = Math.floor(seconds % 3600 / 60);
+                let s = Math.floor(seconds % 60);
+                return (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            }
         </script>
         
     </body>

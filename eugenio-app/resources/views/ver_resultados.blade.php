@@ -51,7 +51,7 @@
         <thead class="text-xl">
           <tr>
             <th>Jogador / Equipa</th>
-            <th>Total de WPM</th>
+            <th>Média de WPM</th>
             <th>Total de certas</th>
             <th>Total de erradas</th>
             <th>Total de tempo</th>
@@ -65,7 +65,7 @@
                 <td>{{ $classificacao->WPM }}</td>
                 <td>{{ $classificacao->QTD_Certas }}</td>
                 <td>{{ $classificacao->QTD_Erradas }}</td>
-                <td>{{ $classificacao->Tempo }} segundos</td>
+                <td>{{ $classificacao->Tempo }}</td>
                 <td>{{ $classificacao->Pontuacao_Final }}</td>
                 </tr>
           @endforeach

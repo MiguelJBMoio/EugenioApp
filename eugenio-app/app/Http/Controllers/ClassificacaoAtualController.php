@@ -34,9 +34,11 @@ class ClassificacaoAtualController extends Controller
 
         $recentTest->update(['FK_Classificacao' => $classificacao->PK_Classificacao]);
 
-
+        $sessaoRecente = Sessao::latest('PK_Sessao')->first()->PK_Sessao;
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
                     ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
+                    ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
+                    ->where('Sessao.PK_Sessao', $sessaoRecente)
                     ->get(['Teste.FK_Configuracao as id_configuracao','Jogador.Nome as Nome_Jogador', 'Jogador.PK_Jogador as id_jogador', 'Classificacao.*']);
 
         return view('classificacao-config', [

@@ -65,28 +65,30 @@
 </html>
 
 <script>
+  // Script botão 'Criar Sessão'
 document.getElementById("create-session-button").addEventListener("click", function(e) {
   e.preventDefault();
 
-  var password = prompt("Insira a senha");
+  //prompt para colcoar a password
+  var password = prompt("Insira a password");
 
-  if (password === "admin") {
-    document.getElementById("create-session-button").innerHTML = "Sessão criada com sucesso";
-    document.getElementById("create-session-button").style.backgroundColor = "green";
+  if (password === "admin") { // Se a password estiver correta
+    document.getElementById("create-session-button").innerHTML = "Sessão criada com sucesso, espere que a página atualize"; //Alteração do texto do botão
+    document.getElementById("create-session-button").style.backgroundColor = "green"; //Alteração da cor de background do botão
 
     setTimeout(function() {
-      document.getElementById("create-session-button").innerHTML = "Criar Sessão";
-      document.getElementById("create-session-button").style.backgroundColor = "";
+      document.getElementById("create-session-button").innerHTML = "Criar Sessão"; //Alteração do texto do botão depois da mensagem de sucesso ser apresentada
+      document.getElementById("create-session-button").style.backgroundColor = ""; //Alteração da cor de background do botão da mensagem de sucesso ser apresentada
       document.getElementById("create-session-form").submit();
-    }, 5000);
-  } else {
-    document.getElementById("create-session-button").innerHTML = "Senha incorreta";
-    document.getElementById("create-session-button").style.backgroundColor = "red";
+    }, 2000);
+  } else { // Se a password estiver incorreta
+    document.getElementById("create-session-button").innerHTML = "Senha incorreta"; //Alteração do texto do botão
+    document.getElementById("create-session-button").style.backgroundColor = "red"; //Alteração da cor de background do botão
 
     setTimeout(function() {
-      document.getElementById("create-session-button").innerHTML = "Criar Sessão";
-      document.getElementById("create-session-button").style.backgroundColor = "";
-    }, 5000);
+      document.getElementById("create-session-button").innerHTML = "Criar Sessão"; //Alteração do texto do botão depois da mensagem de erro ser apresentada
+      document.getElementById("create-session-button").style.backgroundColor = ""; //Alteração da cor de background do botão da mensagem de erro ser apresentada
+    }, 2000);
   }
 });
 </script>
