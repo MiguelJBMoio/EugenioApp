@@ -42,10 +42,10 @@
 </style>
 </head>
 <body class="font-mono text-2xl">
-  <div class="container">
+  <div class="container ">
     <a href="/" class="bg-red-500 text-white p-2 rounded-lg float-left text-sm">Menu Principal</a>
     <h1 class="text-center text-3xl m-4 text-blue-700">Configuração {{ $idConfiguracao }}</h1>
-    <table class="rounded-lg border shadow-2xl">
+    <table class="rounded-lg border shadow-2xl ">
       <thead>
         <tr>
           <th>Jogador / Equipa</th>
@@ -71,6 +71,12 @@
         @endforeach
       </tbody>
     </table>
+    <div class="container">
+      <!-- outro código aqui -->
+      <div class="text-center">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full mt-6" onclick="location.href='{{url('iniciar-desafio')}}'">Iniciar Desafio</button>
+      </div>
+    </div>
   </div>
 </body>
 </html>

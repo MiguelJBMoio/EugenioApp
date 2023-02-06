@@ -12,6 +12,15 @@
         .sair{
             background-color: red;
         }
+
+        tbody {
+            display: block;
+            overflow: auto;
+            width: 100%;
+            height: 200px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-100 h-screen flex justify-center items-center">
@@ -30,7 +39,7 @@
                     <th class="px-4 py-2 text-white">Inscritos</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="w-full text-center rounded-lg">
                 @foreach($jogadores as $jogador)
                     <tr>
                         <td class="text-center text-3xl">{{$jogador->Nome}}</td>

@@ -47,20 +47,19 @@
   <body class="bg-gray-200 align-items justify-content">
     <div class="container mx-auto">
       <h1 class="title text-2xl font-bold text-blue-500 text-center">Circuito Eugénio</h1>
-      <div class="text-center flex-end justify-content">
-        <form id="create-session-form" action="{{url('criar-sessao')}}" method="post" class="flex-end">
+      <div class="container mx-auto text-center">
+    
+        <form id="create-session-form" action="{{url('criar-sessao')}}" method="post" >
           @csrf
           <button type="submit" id="create-session-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">Criar Sessão</button>
         </form>
-      </div>
-      <div class="container mx-auto text-center">
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('iniciar-desafio')}}'">Iniciar Desafio</button>
         <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('ver-resultados')}}'">Ver Resultados</button>
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('sair')}}'">Sair</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" onclick="window.open('', '_self', ''); window.close();">Sair</button>
+
       </div>
     </div>
-    
   </body>
 </html>
 
