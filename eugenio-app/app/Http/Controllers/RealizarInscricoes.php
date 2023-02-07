@@ -11,8 +11,10 @@ use App\Models\Sessao;
 class RealizarInscricoes extends Controller
 {
     function index() {
+        //Obter a sessão mais recente
         $ultima_sessao = Sessao::latest('PK_Sessao')->first();
-    
+        
+        // Obter os jogadores inscritos na sessão
         $jogadores = Jogador::whereHas('testes', function($query) use ($ultima_sessao) {
             $query->whereHas('sessao', function($query) use ($ultima_sessao) {
                 $query->where('PK_Sessao', $ultima_sessao->PK_Sessao);
@@ -22,11 +24,15 @@ class RealizarInscricoes extends Controller
     }
 
     public function adicionarJogador(Request $request) {
+
+        // Criar o jogador
         $jogador = new Jogador();
         $jogador->Nome = $request->input('nomeJogador');
         $jogador->Idade = 0;
         $jogador->save();
         
+
+        // Criar os testes para as configurações
         $ultimaSessao = Sessao::max('PK_Sessao');
         for ($i = 1; $i <= 6; $i++) {
             $teste = new Teste();

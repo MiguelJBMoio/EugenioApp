@@ -11,6 +11,8 @@ use App\Models\Jogador;
 class ClassificacaoAtualController extends Controller
 {
     function index(Request $request){
+
+        //Obter os dados passados por url
         $wpm = $request->input('wpm');
         $correctWords = $request->input('correctWords');
         $incorrectWords = $request->input('incorrectWords');
@@ -19,6 +21,7 @@ class ClassificacaoAtualController extends Controller
         $PK_Configuracao = $request->input('configuracao');
         $PK_Jogador = $request->input('jogador');
 
+        // Criar uma nova classificação, na BD, baseada nesses dados 
         $classificacao = new Classificacao();
         $classificacao->WPM = $wpm;
         $classificacao->QTD_Erros = $incorrectWords;
@@ -27,14 +30,19 @@ class ClassificacaoAtualController extends Controller
         $classificacao->Pontuacao_Final = $pontuacaoFinal;
         $classificacao->save();
 
-        $recentTest = Teste::where('FK_Sessao', Sessao::latest('PK_Sessao')->first()->PK_Sessao)
+        // Obter o teste que do utilizador para esta configuração
+        $thisTest = Teste::where('FK_Sessao', Sessao::latest('PK_Sessao')->first()->PK_Sessao)
         ->where('FK_Configuracao', $PK_Configuracao)
         ->where('FK_Jogador', $PK_Jogador)
         ->first();
 
-        $recentTest->update(['FK_Classificacao' => $classificacao->PK_Classificacao]);
+        // Colocar a classificação criada no teste (Anteriormente era null)
+        $thisTest->update(['FK_Classificacao' => $classificacao->PK_Classificacao]);
 
+        // Obter a sessão atual
         $sessaoRecente = Sessao::latest('PK_Sessao')->first()->PK_Sessao;
+
+        // Obter as classificações do utilizador
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
                     ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
                     ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')

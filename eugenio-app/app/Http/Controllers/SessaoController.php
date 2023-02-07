@@ -9,6 +9,7 @@ class SessaoController extends Controller
 {
     public function criarSessao(Request $request)
     {
+        // Criar uma nova sessão
         $sessao = new Sessao();
         $sessao->Data_sessao = now();
         $sessao->save();

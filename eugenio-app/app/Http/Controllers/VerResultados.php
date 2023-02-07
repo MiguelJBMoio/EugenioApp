@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\DB;
 class VerResultados extends Controller
 {
     function index(){
+        // Obter a sessão mais recente
         $sessaoRecente = Sessao::latest('PK_Sessao')->first()->PK_Sessao;
+
+        // Obter as classificações dos jogadores
         $classificacoes = Classificacao::join('Teste', 'Classificacao.PK_Classificacao', '=', 'Teste.FK_Classificacao')
         ->join('Jogador', 'Teste.FK_Jogador', '=', 'Jogador.PK_Jogador')
         ->join('Sessao', 'Teste.FK_Sessao', '=', 'Sessao.PK_Sessao')
@@ -27,7 +30,7 @@ class VerResultados extends Controller
           DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(Classificacao.Tempo))) as Tempo'),
           DB::raw('SUM(Classificacao.Pontuacao_Final) as Pontuacao_Final')
         ]);
-
+        
         return view('ver_resultados')->with(['classificacoes' => $classificacoes]);
 
 
