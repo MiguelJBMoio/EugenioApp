@@ -54,7 +54,7 @@
       <h1 class="md:text-6xl text-xl font-bold text-blue-700 text-center mt-20">Circuito Eugénio</h1>
       <div class="container mx-auto text-center">
         <button type="submit" id="create-session-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">Criar Sessão</button>
-        <button class=" text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
+        <button id="realizar-inscricoes-button" class=" text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
         <button class=" text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('iniciar-desafio')}}'" >Iniciar Desafio</button>
         <button class="text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('ver-resultados')}}'" >Ver Resultados</button>
         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" onclick="window.open('', '_self', ''); window.close();" >Sair</button>
@@ -66,7 +66,7 @@
 
 <script>
   // Script botão 'Criar Sessão'
-document.getElementById("create-session-button").addEventListener("click", function(e) {
+  document.getElementById("create-session-button").addEventListener("click", function(e) {
   e.preventDefault();
 
   //prompt para colcoar a password

@@ -8,37 +8,25 @@ use App\Http\Controllers\VerResultados;
 use App\Http\Controllers\SessaoController;
 use App\Http\Controllers\DesafioController;
 use App\Http\Controllers\ClassificacaoAtualController;
-//GETS
 
 
-//ROTA HOME
 Route::get('/', [HomeController::class,'index']);
 
-//ROTA REALIZAR INSCRIÇÕES
 Route::get('/realizar-inscricoes', [RealizarInscricoes::class, 'index'])->name('realizar-inscricoes');
 
-//ROTA INICIAR DESAFIO
-Route::get('/iniciar-desafio', [IniciarDesafio::class, 'index']);
+Route::get('/iniciar-desafio', [IniciarDesafio::class, 'index'])->name('iniciar-desafio');
 
-//ROTA VER RESULTADOS
-Route::get('/ver-resultados', [VerResultados::class, 'index']);
+Route::get('/ver-resultados', [VerResultados::class, 'index'])->name('ver-resultados');
 
-//ROTA SAIR
-Route::get('/sair', [HomeController::class, 'index']);
+Route::get('/sair', [HomeController::class, 'index'])->name('sair');
 
-//ROTA DESAFIO
-Route::get('/desafio', [DesafioController::class, 'index']);
-
-//--------------------------------------------------------------------------------------------------------------
-
-
-//POSTS
+Route::get('/desafio', [DesafioController::class, 'index'])->name('desafio');
 
 Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador'])->name('adicionarJogador');
 
-Route::get('/criar-sessao', [SessaoController::class, 'criarSessao']);
+Route::get('/criar-sessao', [SessaoController::class, 'criarSessao'])->name('criar-sessao');
 
-Route::get('/classificacao-config', [ClassificacaoAtualController::class, 'index']);
+Route::get('/classificacao-config', [ClassificacaoAtualController::class, 'index'])->name('classificacao-config');
 
 /*
 |--------------------------------------------------------------------------

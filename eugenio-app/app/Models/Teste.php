@@ -15,11 +15,6 @@ class Teste extends Model
     protected $primaryKey = 'PK_Teste';
     public $timestamps = false;
     
-    public function jogador()
-    {
-        return $this->belongsTo(Jogador::class, 'FK_Jogador', 'PK_Jogador');
-    }
-    
     public function sessao()
     {
         return $this->belongsTo(Sessao::class, 'FK_Sessao', 'PK_Sessao');

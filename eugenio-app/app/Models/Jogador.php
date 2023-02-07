@@ -16,8 +16,6 @@ class Jogador extends Model
         return $this->hasMany(Teste::class, 'FK_Jogador', 'PK_Jogador');
     }
     
-    public function classificacoes()
-    {
-        return $this->hasMany(Classificacao::class, 'PK_Jogador', 'id');
-    }
 }
+
+
