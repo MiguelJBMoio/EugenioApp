@@ -3,6 +3,12 @@
   <head>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <style>
+      button{
+        background-color: blue
+      }
+      button:hover{
+        background-color: cadetblue
+      }
       .title {
         text-align: center;
         font-size: 4rem;
@@ -23,7 +29,6 @@
         font-size: 2rem;
         padding: 1.5rem 3rem;
         width: 50%;
-        background-color: blue;
         text-align: center;
       }
       .container > button:last-child {
@@ -45,18 +50,14 @@
   </head>
   
   <body class="bg-gray-200 align-items justify-content">
-    <div class="container mx-auto">
-      <h1 class="title text-2xl font-bold text-blue-500 text-center">Circuito Eugénio</h1>
+    <div class="container mx-auto h-full">
+      <h1 class="md:text-6xl text-xl font-bold text-blue-700 text-center mt-20">Circuito Eugénio</h1>
       <div class="container mx-auto text-center">
-    
-        <form id="create-session-form" action="{{url('criar-sessao')}}" method="post" >
-          @csrf
-          <button type="submit" id="create-session-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">Criar Sessão</button>
-        </form>
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('iniciar-desafio')}}'">Iniciar Desafio</button>
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('ver-resultados')}}'">Ver Resultados</button>
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" onclick="window.open('', '_self', ''); window.close();">Sair</button>
+        <button type="submit" id="create-session-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">Criar Sessão</button>
+        <button class=" text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('realizar-inscricoes')}}'">Realizar Inscrições</button>
+        <button class=" text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('iniciar-desafio')}}'" >Iniciar Desafio</button>
+        <button class="text-white font-bold py-2 px-4 rounded-full" onclick="location.href='{{url('ver-resultados')}}'" >Ver Resultados</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" onclick="window.open('', '_self', ''); window.close();" >Sair</button>
 
       </div>
     </div>
@@ -78,7 +79,7 @@ document.getElementById("create-session-button").addEventListener("click", funct
     setTimeout(function() {
       document.getElementById("create-session-button").innerHTML = "Criar Sessão"; //Alteração do texto do botão depois da mensagem de sucesso ser apresentada
       document.getElementById("create-session-button").style.backgroundColor = ""; //Alteração da cor de background do botão da mensagem de sucesso ser apresentada
-      document.getElementById("create-session-form").submit();
+      location.href="/criar-sessao"
     }, 2000);
   } else { // Se a password estiver incorreta
     document.getElementById("create-session-button").innerHTML = "Senha incorreta"; //Alteração do texto do botão

@@ -46,7 +46,7 @@
   <div class="container">
     <a href="/" class="bg-red-500 text-white p-2 rounded-lg float-left text-sm">Menu Principal</a>
 
-    <h1 class="text-center text-3xl m-4 text-blue-700">Configuração Geral</h1>
+    <h1 class="text-center text-3xl m-4 text-blue-700">Classificação Geral</h1>
     <table class="rounded-lg border shadow-2xl">
         <thead class="text-xl">
           <tr>

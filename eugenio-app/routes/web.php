@@ -36,7 +36,7 @@ Route::get('/desafio', [DesafioController::class, 'index']);
 
 Route::post('/adicionarJogador', [RealizarInscricoes::class, 'adicionarJogador'])->name('adicionarJogador');
 
-Route::post('/criar-sessao', [SessaoController::class, 'criarSessao']);
+Route::get('/criar-sessao', [SessaoController::class, 'criarSessao']);
 
 Route::get('/classificacao-config', [ClassificacaoAtualController::class, 'index']);
 
