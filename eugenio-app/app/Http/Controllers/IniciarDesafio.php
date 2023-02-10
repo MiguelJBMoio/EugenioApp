@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Jogador;
@@ -11,6 +12,7 @@ use App\Models\Sessao;
 class IniciarDesafio extends Controller
 {
     function index(){
+
         // Obter sessão mais recente
         $ultima_sessao = Sessao::latest('PK_Sessao')->first();
 
