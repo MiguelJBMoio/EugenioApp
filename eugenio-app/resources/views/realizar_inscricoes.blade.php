@@ -39,10 +39,10 @@
                     <th class="px-4 py-2 text-white">Inscritos</th>
                 </tr>
             </thead>
-            <tbody class="w-full text-center rounded-lg">
+            <tbody class="w-full rounded-lg">
                 @foreach($jogadores as $jogador)
                     <tr>
-                        <td class="text-center text-3xl">{{$jogador->Nome}}</td>
+                        <td class="text-3xl">{{$jogador->Nome}}</td>
                     </tr>
                 @endforeach
             </tbody>
