@@ -1,0 +1,60 @@
+CREATE DATABASE eugenio;
+USE eugenio;
+
+CREATE TABLE Sessao (
+    PK_Sessao INT AUTO_INCREMENT PRIMARY KEY,
+    Data_sessao DATE
+);
+
+CREATE TABLE Jogador (
+    PK_Jogador INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255),
+    Idade INT
+);
+
+CREATE TABLE Configuracao (
+    PK_Configuracao INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(255),
+    Tempo_Configuracao TIME,
+    Texto TEXT
+);
+
+CREATE TABLE Classificacao (
+    PK_Classificacao INT AUTO_INCREMENT PRIMARY KEY,
+    WPM FLOAT,
+    QTD_Erros INT,
+    QTD_Certas INT,
+    Tempo TIME,
+    Pontuacao_Final INT
+);
+
+CREATE TABLE Teste (
+    PK_Teste INT AUTO_INCREMENT PRIMARY KEY,
+    FK_Sessao INT,
+    FK_Configuracao INT,
+    FK_Jogador INT,
+    FK_Classificacao INT,
+    FOREIGN KEY (FK_Sessao) REFERENCES Sessao(PK_Sessao),
+    FOREIGN KEY (FK_Configuracao) REFERENCES Configuracao(PK_Configuracao),
+    FOREIGN KEY (FK_Jogador) REFERENCES Jogador(PK_Jogador),
+    FOREIGN KEY (FK_Classificacao) REFERENCES Classificacao(PK_Classificacao)
+);
+
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (1, 'Configuracao 1', '00:02:00', 'Texto Config 1');
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (2, 'Configuracao 2', '00:02:00', 'Texto Config 2');
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (3, 'Configuracao 3', '00:02:00', 'Texto Config 3');
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (4, 'Configuracao 4', '00:02:00', 'Texto Config 4');
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (5, 'Configuracao 5', '00:02:00', 'Texto Config 5');
+
+INSERT INTO Configuracao (PK_Configuracao, Titulo, Tempo_Configuracao, Texto)
+VALUES (6, 'Configuracao 6', '00:02:00', 'Texto Config 6');
